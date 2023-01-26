@@ -11,13 +11,13 @@ def make_log(user_id, book_id, action):
     mydb.commit()
 
 
-def add_user(id, name, grade, barcode, admin):
-    cursor.execute(f"INSERT INTO library.users VALUES ({id, name, grade, barcode, admin})")
+def add_user(u_id, name, grade, barcode, admin):
+    cursor.execute(f"INSERT INTO library.users VALUES ({u_id}, '{name}', {grade}, {barcode}, {admin})")
     mydb.commit()
 
 
-def add_book(id, name, barcode):
-    cursor.execute(f"INSERT INTO library.users VALUES ({id, name, barcode})")
+def add_book(b_id, name, barcode):
+    cursor.execute(f"INSERT INTO library.users VALUES ({b_id}, {name}, {barcode})")
     mydb.commit()
 
 
