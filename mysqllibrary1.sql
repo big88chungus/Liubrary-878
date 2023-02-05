@@ -21,11 +21,13 @@ USE `library` ;
 -- Table `library`.`books`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `library`.`books` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(128) NOT NULL,
   `barcode` BIGINT NOT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `barcode_UNIQUE` (`barcode` ASC) VISIBLE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 21
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -34,13 +36,15 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `library`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `library`.`users` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL DEFAULT NULL,
   `grade` INT NULL DEFAULT NULL,
-  `barcode` INT NULL DEFAULT NULL,
+  `barcode` BIGINT NULL DEFAULT NULL,
   `admin` INT NULL DEFAULT '1',
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `barcode_UNIQUE` (`barcode` ASC) VISIBLE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 11
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -69,11 +73,14 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `library`.`log`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `library`.`log` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `book_id` INT NOT NULL,
+  `action` VARCHAR(45) NOT NULL,
   `time` DATETIME NOT NULL,
-  `action` VARCHAR(45) NOT NULL)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 298
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -81,3 +88,4 @@ COLLATE = utf8mb4_0900_ai_ci;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
